@@ -28,10 +28,10 @@ if (toggleSwitch && themeLink) {
     const current = themeLink.getAttribute('href');
     if (toggleSwitch.checked) {
       // Cambiar a tema oscuro
-      themeLink.setAttribute('href', current.replace('main.css', 'maindark.css'));
+      themeLink.setAttribute('href', current.replace('maindark.css', 'main.css'));
     } else {
       // Volver a tema claro
-      themeLink.setAttribute('href', current.replace('maindark.css', 'main.css'));
+      themeLink.setAttribute('href', current.replace('main.css', 'maindark.css'));
     }
   });
 }

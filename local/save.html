@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save</title>
+  <link id="theme-link" rel="stylesheet" href="../css/maindark.css">
+  <link rel="stylesheet" href="../css/form.css">
+  <script src="../script/script.js" defer></script>
+  <script src="../script/save.js"></script>
+</head>
+<body>
+  <!-- Switch de tema -->
+  <label class="theme-switch">
+    <input type="checkbox" id="toggle-theme">
+    <span class="slider"></span>
+  </label>
+
+  <section class="form-1">
+    <form id="saveForm">
+      <div class="form-row">
+        <input type="text" id="title" name="title" placeholder="Title" required>
+        <input type="text" id="device" name="device" placeholder="Device" required>
+      </div>
+
+      <input type="text" id="description" name="description" placeholder="Description" required>
+
+      <button type="submit">Guardar</button>
+      <button type="button" id="clearBtn">Limpiar</button>
+    </form>
+  </section>
+</body>
+</html>
