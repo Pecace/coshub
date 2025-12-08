@@ -12,6 +12,7 @@ body {
   color: #333;
   line-height: 1.6;
   padding: 20px;
+  padding-top: 60px; /* altura aproximada del nav, Ajuste para que el contenido no quede oculto detrás del menú */
 }
 
 /* Estilos para las secciones */
@@ -73,21 +74,21 @@ nav ul li a:hover {
 }
 
 /* Efecto de sombreado al pasar el cursor */
-.copy-target {
+.copied-1 {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.copy-target:hover {
+.copied-1:hover {
   background-color: #e0e0e0;
 }
 
 /* Aviso de copiado */
-#copy-notice {
+#copy-1 {
   position: fixed;
-  top: 20px;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
-  background: #2c3e50;
+  background: #1abc9c;
   color: #fff;
   padding: 8px 16px;
   border-radius: 4px;
@@ -95,12 +96,12 @@ nav ul li a:hover {
   transition: opacity 0.5s ease;
   z-index: 1000;
 }
-#copy-notice.show {
+#copy-1.show {
   opacity: 1;
 }
 
 /* Menú estilizado (para move.html y otras páginas) */
-nav.styled {
+nav.navy {
   position: fixed;
   top: 0;
   left: 0;
@@ -110,7 +111,7 @@ nav.styled {
   z-index: 1000;
 }
 
-nav.styled ul {
+nav.navy ul {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -119,7 +120,7 @@ nav.styled ul {
   padding: 0;
 }
 
-nav.styled ul li a {
+nav.navy ul li a {
   text-decoration: none;
   color: #ecf0f1;
   background-color: #34495e;
@@ -128,11 +129,54 @@ nav.styled ul li a {
   transition: background-color 0.3s ease;
 }
 
-nav.styled ul li a:hover {
+nav.navy ul li a:hover {
   background-color: #1abc9c;
 }
 
-/* Ajuste para que el contenido no quede oculto detrás del menú */
-body {
-  padding-top: 60px; /* altura aproximada del nav */
+/* Switch de cambio de tema */
+.theme-switch {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  z-index: 9999; /* asegura que quede encima de todo */
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* color de la barra */
+  transition: 0.4s;
+  border-radius: 25px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white; /* color del círculo */
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Estado activado (checked) */
+input:checked + .slider {
+  background-color: #1abc9c; /* color de la barra activa */
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px); /* desliza el círculo */
 }

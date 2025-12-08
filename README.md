@@ -5,7 +5,8 @@ coshub/
 ├── index.html
 │
 ├── css/
-│   └── main.css
+│   ├─── main.css
+│   ├─── maindark.css  
 │
 ├── script/
 │   └── script.js

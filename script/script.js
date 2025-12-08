@@ -4,13 +4,13 @@
 console.log("¡JavaScript conectado correctamente!");
 
 // Funcionalidad de copiado
-document.querySelectorAll('.copy-target').forEach(el => {
+document.querySelectorAll('.copied-1').forEach(el => {
   el.addEventListener('click', () => {
     // Copiar solo el texto visible (sin etiquetas)
     const text = el.innerText;
     navigator.clipboard.writeText(text).then(() => {
       // Mostrar aviso
-      const notice = document.getElementById('copy-notice');
+      const notice = document.getElementById('copy-1');
       notice.classList.add('show');
       setTimeout(() => {
         notice.classList.remove('show');
@@ -18,3 +18,20 @@ document.querySelectorAll('.copy-target').forEach(el => {
     });
   });
 });
+
+// Cambio de tema claro/oscuro con switch
+const toggleSwitch = document.getElementById('toggle-theme');
+const themeLink = document.getElementById('theme-link');
+
+if (toggleSwitch && themeLink) {
+  toggleSwitch.addEventListener('click', () => {
+    const current = themeLink.getAttribute('href');
+    if (toggleSwitch.checked) {
+      // Cambiar a tema oscuro
+      themeLink.setAttribute('href', current.replace('main.css', 'maindark.css'));
+    } else {
+      // Volver a tema claro
+      themeLink.setAttribute('href', current.replace('maindark.css', 'main.css'));
+    }
+  });
+}

@@ -4,22 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Traslado</title>
-  <link rel="stylesheet" href="../css/main.css">
+  <link id="theme-link" rel="stylesheet" href="../css/maindark.css" >
   <script src="../script/script.js" defer></script>
 </head>
 <body>
   <!-- Menú de navegación fijo -->
-  <nav class="styled">
+  <nav class="navy">
     <ul>
       <li><a href="../index.html">Inicio</a></li>
     </ul>
   </nav>
-
+  <!-- Switch de tema -->
+  <label class="theme-switch">
+    <input type="checkbox" id="toggle-theme">
+    <span class="slider"></span>
+  </label>
+  
   <main>
+    <h1>Traslado</h1>
     <!-- Sección: Solicitud de traslado -->
     <section>
-      <h1>Solicitud de Traslado</h1>
-      <div class="copy-target">
+      <h2>Solicitud de Traslado</h2>
+      <div class="copied-1">
         <p>
           Claro que sí 😊 Para poder validar la disponibilidad del traslado en el sistema, necesito que me compartas la información completa de la nueva dirección:
         </p>
@@ -38,7 +44,7 @@
     <!-- Sección: Creación de dirección -->
     <section>
       <h2>Creación de Dirección</h2>
-      <div class="copy-target">
+      <div class="copied-1">
         <p>
           Agradezco tu amable espera. Te comento, es necesario validar la disponibilidad de la dirección con el área técnica, ya que, no se encuentra registrada en el sistema; por eso se debe escalar una solicitud para la creación de la misma, que toma entre 24 y 72 horas ⏳
         </p>
@@ -49,7 +55,7 @@
     </section>
   </main>
 <!-- Aviso de copiado -->
-<div id="copy-notice">Copied</div>
+<div id="copy-1">Copied</div>
 
 </body>
 </html>
