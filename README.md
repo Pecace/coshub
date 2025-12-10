@@ -5,11 +5,19 @@ coshub/
 ├── index.html
 │
 ├── css/
-│   ├─── main.css
-│   ├─── maindark.css  
+│   ├── form.css
+│   ├── main.css
+│   └── maindark.css
 │
 ├── script/
+│   ├── save.css
 │   └── script.js
 │
 └── cases/
-    └── move.html
+│   ├── cancel.html
+│   ├── move.html
+│   └── support.html
+│
+└── local/
+    ├── main.html
+    └── save.html
