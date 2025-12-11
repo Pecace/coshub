@@ -16,7 +16,9 @@ coshub/
 └── cases/
 │   ├── cancel.html
 │   ├── move.html
-│   └── support.html
+│   ├── script.html
+│   ├── support.html
+│   └── visit.html
 │
 └── local/
     ├── main.html

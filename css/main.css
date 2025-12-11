@@ -76,6 +76,7 @@ nav ul li a:hover {
 /* Efecto de sombreado al pasar el cursor */
 .copied-1 {
   cursor: pointer;
+  padding: 5px;
   transition: background-color 0.3s ease;
 }
 .copied-1:hover {
@@ -179,4 +180,14 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(24px); /* desliza el círculo */
+}
+
+.nota {
+  background-color: #fff3cd;   /* fondo amarillo suave */
+  border-left: 4px solid #ffc107; /* borde lateral que resalta */
+  padding: 10px 15px;
+  margin: 15px 0;
+  font-style: italic;
+  color: #856404;              /* texto marrón */
+  border-radius: 4px;
 }
