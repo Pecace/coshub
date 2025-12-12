@@ -182,7 +182,7 @@ input:checked + .slider:before {
   transform: translateX(24px); /* desliza el círculo */
 }
 
-.nota {
+.nota-1 {
   background-color: #fff3cd;   /* fondo amarillo suave */
   border-left: 4px solid #ffc107; /* borde lateral que resalta */
   padding: 10px 15px;

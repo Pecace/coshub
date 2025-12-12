@@ -13,12 +13,15 @@ coshub/
 │   ├── save.css
 │   └── script.js
 │
-└── cases/
+├── cases/
 │   ├── cancel.html
 │   ├── move.html
 │   ├── script.html
+│   ├── stole.html
 │   ├── support.html
-│   └── visit.html
+│   ├── visit.html
+│   └── libretto/
+│       └── greeting.html
 │
 └── local/
     ├── main.html
