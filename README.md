@@ -16,11 +16,13 @@ coshub/
 ├── cases/
 │   ├── cancel.html
 │   ├── move.html
+│   ├── roaming.html
 │   ├── script.html
 │   ├── stole.html
 │   ├── support.html
 │   ├── visit.html
 │   └── libretto/
+│       ├── fault.html
 │       └── greeting.html
 │
 └── local/
