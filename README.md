@@ -25,6 +25,10 @@ coshub/
 │       ├── fault.html
 │       └── greeting.html
 │
+│
+├── link/
+│   └── claro.html
+│
 └── local/
     ├── main.html
     └── save.html

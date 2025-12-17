@@ -32,13 +32,23 @@ h1, h2 {
 }
 
 /* Listas ordenadas */
-ol {
+ul {
   margin-left: 20px;
   margin-top: 10px;
 }
 
-ol li {
+ul li {
   margin-bottom: 8px;
+}
+
+a {
+  color: #64b5f6; /* color del enlace */
+  text-decoration: none; /* quita el subrayado por defecto */
+}
+
+a:hover {
+  color: #90caf9; /* tono más claro al pasar el mouse */
+  text-decoration: underline; /* subrayado en hover para accesibilidad */
 }
 
 /* Estilos para el menú de navegación */
