@@ -27,6 +27,7 @@ coshub/
 │
 │
 ├── link/
+│   ├── connect.html
 │   └── claro.html
 │
 └── local/
