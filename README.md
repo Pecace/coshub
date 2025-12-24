@@ -10,6 +10,7 @@ coshub/
 │   └── maindark.css
 │
 ├── script/
+│   ├── cases.css
 │   ├── save.css
 │   └── script.js
 │
@@ -31,5 +32,6 @@ coshub/
 │   └── claro.html
 │
 └── local/
+    ├── cases.html
     ├── main.html
     └── save.html
