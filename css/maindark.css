@@ -39,6 +39,17 @@ ul {
 
 ul li {
   margin-bottom: 8px;
+  list-style-type: none;
+}
+
+a {
+  color: #64b5f6;
+  text-decoration: none;
+}
+
+/* Lista desplegable */
+details summary {
+  cursor: pointer;
 }
 
 /* Estilos para el menú de navegación */
