@@ -23,6 +23,7 @@ coshub/
 │   ├── support.html
 │   ├── visit.html
 │   └── libretto/
+│       ├── active.html
 │       ├── fault.html
 │       └── greeting.html
 │
