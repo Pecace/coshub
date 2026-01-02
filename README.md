@@ -27,6 +27,7 @@ coshub/
 │       ├── fault.html
 │       └── greeting.html
 │
+├── image/
 │
 ├── link/
 │   ├── connect.html

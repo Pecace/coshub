@@ -35,3 +35,12 @@ if (toggleSwitch && themeLink) {
     }
   });
 }
+
+// Oprn new window
+function blanknew(url) {
+  window.open(
+    url,                // Dirección del enlace
+    '_blank',           // Nombre de la ventana (usar '_blank' crea una nueva)
+    'width=1000,height=800,resizable=yes,scrollbars=yes' // Opciones de la ventana
+  );
+}
