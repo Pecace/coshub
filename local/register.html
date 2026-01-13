@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main</title>
+  <link id="theme-link" rel="stylesheet" href="../css/register.css">
+  <script src="../script/register.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Cases Register</h1>
+      <button id="toggleTheme" class="btn"> 🌙 </button>
+    </header>
+
+    <section class="controls">
+      <form id="form" autocomplete="off">
+        <div class="form-grid">
+          <label>
+            <span>casenumber *</span>
+            <input id="casenumber" name="casenumber" type="text" required tabindex="1" />
+          </label>
+
+          <label>
+            <span>name</span>
+            <input id="name" name="name" type="text" value="null" tabindex="2" />
+          </label>
+
+          <label>
+            <span>service</span>
+            <input id="service" name="service" type="text" value="0" tabindex="3" />
+          </label>
+
+          <label>
+            <span>section</span>
+            <input id="section" name="section" list="section-list" value="null" tabindex="4" />
+            <datalist id="section-list">
+              <option value="home"></option>
+              <option value="mobile"></option>
+              <option value="idle"></option>
+            </datalist>
+          </label>
+
+          <label>
+            <span>case</span>
+            <input id="case" name="case" list="case-list" value="null" tabindex="5" />
+            <datalist id="case-list">
+              <option value="bill"></option>
+              <option value="cancel"></option>
+              <option value="info"></option>
+              <option value="move"></option>
+              <option value="pqr"></option>
+              <option value="register"></option>
+              <option value="roaming"></option>
+              <option value="sell"></option>
+              <option value="stole"></option>
+              <option value="support"></option>
+            </datalist>
+          </label>
+
+          <label>
+            <span>filed</span>
+            <input id="filed" name="filed" type="text" value="0" tabindex="6" />
+          </label>
+
+        </div>
+
+        <div class="form-actions">
+          <div class="left-actions">
+            <button id="submitBtn" type="submit" class="btn primary">Crear registro</button>
+            <button id="cancelEditBtn" type="button" class="btn" hidden>Cancelar edición</button>
+          </div>
+
+          <div class="right-actions">
+            <input id="search" type="search" placeholder="Buscar por cualquier campo..." />
+            <button id="downloadCsv" type="button" class="btn">Descargar CSV</button>
+            <button id="clearAll" type="button" class="btn danger">Limpiar todos</button>
+          </div>
+        </div>
+
+        <div id="message" role="status" aria-live="polite" class="message" hidden></div>
+      </form>
+    </section>
+
+    <section class="meta">
+      <div class="edit-indicator" id="editIndicator" hidden>Modo: <strong>Editando</strong></div>
+      <div class="counter">Total registros: <span id="counter">0</span></div>
+    </section>
+
+    <section class="table-wrap">
+      <table id="table" class="records-table">
+        <thead>
+          <tr>
+            <th data-sortable="casenumber" class="sortable" tabindex="0">casenumber <span class="sort-indicator" data-field="casenumber"></span></th>
+            <th data-sortable="name" class="sortable" tabindex="0">name <span class="sort-indicator" data-field="name"></span></th>
+            <th data-sortable="service" class="sortable" tabindex="0">service <span class="sort-indicator" data-field="service"></span></th>
+            <th data-sortable="section" class="sortable" tabindex="0">section <span class="sort-indicator" data-field="section"></span></th>
+            <th data-sortable="case" class="sortable" tabindex="0">case <span class="sort-indicator" data-field="case"></span></th>
+            <th data-sortable="filed" class="sortable" tabindex="0">filed <span class="sort-indicator" data-field="filed"></span></th>
+            <th data-sortable="date" class="sortable" tabindex="0">date <span class="sort-indicator" data-field="date"></span></th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <!-- Filas generadas por JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="footer">
+      <small>Aplicación local - datos guardados en LocalStorage (clave: <code>registros</code>).</small>
+    </footer>
+  </main>
+</body>
+</html>

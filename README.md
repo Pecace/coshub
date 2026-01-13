@@ -7,11 +7,13 @@ coshub/
 ├── css/
 │   ├── form.css
 │   ├── main.css
-│   └── maindark.css
+│   ├── maindark.css
+│   └── register.css
 │
 ├── script/
-│   ├── cases.css
-│   ├── save.css
+│   ├── cases.js
+│   ├── save.js
+│   ├── register.js
 │   └── script.js
 │
 ├── cases/
@@ -36,4 +38,5 @@ coshub/
 └── local/
     ├── cases.html
     ├── main.html
+    ├── register.html
     └── save.html
