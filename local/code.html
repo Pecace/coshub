@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main</title>
+  <link id="theme-link" rel="stylesheet" href="../css/maindark.css">
+  <script src="../script/script.js" defer></script>
+</head>
+<body>
+<main>
+  
+<section>
+  <h2>HTML</h2>
+  <pre class="copied-1"><code>
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Main&lt;/title&gt;
+    &lt;link id="theme-link" rel="stylesheet" href="style.css"&gt;
+    &lt;script src="script.js" defer&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main class="container"&gt;
+      &lt;header&gt;
+        &lt;h1&gt;Cases Register&lt;/h1&gt;
+        &lt;button id="toggleTheme" class="btn"&gt; 🌙 &lt;/button&gt;
+      &lt;/header&gt;
+
+      &lt;section class="controls"&gt;
+        &lt;form id="form" autocomplete="off"&gt;
+          &lt;div class="form-grid"&gt;
+            &lt;label&gt;
+              &lt;span&gt;casenumber *&lt;/span&gt;
+              &lt;input id="casenumber" name="casenumber" type="text" required tabindex="1" /&gt;
+            &lt;/label&gt;
+
+            &lt;label&gt;
+              &lt;span&gt;name&lt;/span&gt;
+              &lt;input id="name" name="name" type="text" value="null" tabindex="2" /&gt;
+            &lt;/label&gt;
+
+            &lt;label&gt;
+              &lt;span&gt;service&lt;/span&gt;
+              &lt;input id="service" name="service" type="text" value="0" tabindex="3" /&gt;
+            &lt;/label&gt;
+
+            &lt;label&gt;
+              &lt;span&gt;section&lt;/span&gt;
+              &lt;input id="section" name="section" list="section-list" value="null" tabindex="4" /&gt;
+              &lt;datalist id="section-list"&gt;
+                &lt;option value="home"&gt;&lt;/option&gt;
+                &lt;option value="mobile"&gt;&lt;/option&gt;
+                &lt;option value="idle"&gt;&lt;/option&gt;
+              &lt;/datalist&gt;
+            &lt;/label&gt;
+
+            &lt;label&gt;
+              &lt;span&gt;case&lt;/span&gt;
+              &lt;input id="case" name="case" list="case-list" value="null" tabindex="5" /&gt;
+              &lt;datalist id="case-list"&gt;
+                &lt;option value="bill"&gt;&lt;/option&gt;
+                &lt;option value="cancel"&gt;&lt;/option&gt;
+                &lt;option value="info"&gt;&lt;/option&gt;
+                &lt;option value="move"&gt;&lt;/option&gt;
+                &lt;option value="pay"&gt;&lt;/option&gt;
+                &lt;option value="pqr"&gt;&lt;/option&gt;
+                &lt;option value="register"&gt;&lt;/option&gt;
+                &lt;option value="roaming"&gt;&lt;/option&gt;
+                &lt;option value="sell"&gt;&lt;/option&gt;
+                &lt;option value="stole"&gt;&lt;/option&gt;
+                &lt;option value="support"&gt;&lt;/option&gt;
+              &lt;/datalist&gt;
+            &lt;/label&gt;
+
+            &lt;label&gt;
+              &lt;span&gt;filed&lt;/span&gt;
+              &lt;input id="filed" name="filed" type="text" value="0" tabindex="6" /&gt;
+            &lt;/label&gt;
+
+          &lt;/div&gt;
+
+          &lt;div class="form-actions"&gt;
+            &lt;div class="left-actions"&gt;
+              &lt;button id="submitBtn" type="submit" class="btn primary"&gt;Crear registro&lt;/button&gt;
+              &lt;button id="cancelEditBtn" type="button" class="btn" hidden&gt;Cancelar edición&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div class="right-actions"&gt;
+              &lt;input id="search" type="search" placeholder="Buscar por cualquier campo..." /&gt;
+              &lt;button id="downloadCsv" type="button" class="btn"&gt;Descargar CSV&lt;/button&gt;
+              &lt;button id="clearAll" type="button" class="btn danger"&gt;Limpiar todos&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div id="message" role="status" aria-live="polite" class="message" hidden&gt;&lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/section&gt;
+
+      &lt;section class="meta"&gt;
+        &lt;div class="edit-indicator" id="editIndicator" hidden&gt;Modo: &lt;strong&gt;Editando&lt;/strong&gt;&lt;/div&gt;
+        &lt;div class="counter"&gt;Total registros: &lt;span id="counter"&gt;0&lt;/span&gt;&lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class="table-wrap"&gt;
+        &lt;table id="table" class="records-table"&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th data-sortable="casenumber" class="sortable" tabindex="0"&gt;casenumber &lt;span class="sort-indicator" data-field="casenumber"&gt;&lt;/span&gt;&lt;/th&gt;
+              &lt;th data-sortable="name" class="sortable" tabindex="0"&gt;name &lt;span class="sort-indicator" data-field="name"&gt;&lt;/span&gt;&lt;/th&gt;
+              &lt;th data-sortable="service" class="sortable" tabindex="0"&gt;service &lt;span class="sort-indicator" data-field="service"&gt;&lt;/span&gt;&lt;/th&gt;
+              &lt;th data-sortable="section" class="sortable" tabindex="0"&gt;section &lt;span class="sort-indicator" data-field="section"&gt;&lt;/span&gt;&lt;/th&gt;
+              &lt;th data-sortable="case" class="sortable" tabindex="0"&gt;case &lt;span class="sort-indicator" data-field="case"&gt;&lt;/span&gt;&lt;/th&gt;
+              &lt;th data-sortable="filed" class="sortable" tabindex="0"&gt;filed &lt;span class="sort-indicator" data-field="filed"&gt;&lt;/span&gt;&lt;/th&gt;
+              &lt;th data-sortable="date" class="sortable" tabindex="0"&gt;date &lt;span class="sort-indicator" data-field="date"&gt;&lt;/span&gt;&lt;/th&gt;
+              &lt;th&gt;Acciones&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody id="tbody"&gt;
+            &lt;!-- Filas generadas por JS --&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/section&gt;
+
+      &lt;footer class="footer"&gt;
+        &lt;small&gt;Aplicación local - datos guardados en LocalStorage (clave: &lt;code&gt;registros&lt;/code&gt;).&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+  </code></pre>
+</section>
+<section>
+  <h2>JS</h2>
+  <pre class="copied-1"><code>
+  const form = document.getElementById('form');
+  const table = document.getElementById('table');
+  const tbody = document.getElementById('tbody');
+  const search = document.getElementById('search');
+  const counter = document.getElementById('counter');
+  const message = document.getElementById('message');
+  const editIndicator = document.getElementById('editIndicator');
+  const cancelEditBtn = document.getElementById('cancelEditBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  const toggleTheme = document.getElementById('toggleTheme');
+  
+  let records = [];
+  let editingIndex = null;
+  let sortField = null;
+  let sortAsc = true;
+  
+  function init() {
+    loadTheme();
+    loadRecords();
+    renderTable();
+  
+    const inputs = form.querySelectorAll('input[type="text"], input[list]');
+    inputs.forEach(input => {
+      input.addEventListener('focus', () => input.select());
+    });
+  
+    form.addEventListener('submit', handleSubmit);
+    cancelEditBtn.addEventListener('click', cancelEdit);
+    search.addEventListener('input', renderTable);
+    toggleTheme.addEventListener('click', toggleDarkMode);
+    document.getElementById('clearAll').addEventListener('click', clearAll);
+    document.getElementById('downloadCsv').addEventListener('click', downloadCsv);
+  
+    table.querySelectorAll('.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const field = th.dataset.sortable;
+        if (sortField === field) sortAsc = !sortAsc;
+        else {
+          sortField = field;
+          sortAsc = true;
+        }
+        renderTable();
+      });
+    });
+  }
+  
+  function loadTheme() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') document.body.classList.add('dark');
+  }
+  
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  }
+  
+  function loadRecords() {
+    const saved = JSON.parse(localStorage.getItem('registros')) || [];
+    records = saved.map(row => {
+      if (row[7] === 'si') return [...row.slice(0, 7), '1'];
+      if (row[7] === 'no') return [...row.slice(0, 7), '0'];
+      return row;
+    });
+  }
+  
+  function saveRecords() {
+    localStorage.setItem('registros', JSON.stringify(records));
+  }
+  
+  function handleSubmit(e) {
+    e.preventDefault();
+    const data = getFormData();
+    if (!data[0]) return showMessage('casenumber es obligatorio');
+  
+    if (editingIndex !== null) {
+      records[editingIndex] = data;
+      editingIndex = null;
+      showMessage('Registro actualizado');
+    } else {
+      records.push(data);
+      showMessage('Registro creado');
+    }
+  
+    saveRecords();
+    renderTable();
+    form.reset();
+    cancelEdit();
+  }
+  
+  function getFormData() {
+    const casenumber = form.casenumber.value.trim();
+    const name = form.name.value.trim();
+    const service = form.service.value.trim();
+    const section = form.section.value.trim();
+    const caseType = form.case.value.trim();
+    const filed = form.filed.value.trim();
+    const date = new Date().toLocaleString(); // toLocaleDateString: mostrar solo fecha
+  
+    return [casenumber, name, service, section, caseType, filed, date];
+  }
+  
+  function renderTable() {
+    const query = search.value.toLowerCase();
+    let filtered = records.filter(row => row.some(cell => (cell ?? '').toLowerCase().includes(query)));
+  
+    if (sortField) {
+      filtered.sort((a, b) => {
+        const idx = fieldToIndex(sortField);
+        const va = (a[idx] || '').toLowerCase();
+        const vb = (b[idx] || '').toLowerCase();
+        return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+      });
+    }
+  
+    tbody.innerHTML = '';
+    filtered.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      for (let j = 0; j < 7; j++) {
+        const td = document.createElement('td');
+        let value = row[j] ?? '';
+        td.textContent = value;
+        tr.appendChild(td);
+      }
+  
+      const actions = document.createElement('td');
+      const editBtn = document.createElement('button');
+      editBtn.textContent = 'Editar';
+      editBtn.className = 'small-btn edit';
+      editBtn.onclick = () => startEdit(i);
+  
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Eliminar';
+      deleteBtn.className = 'small-btn delete';
+      deleteBtn.onclick = () => deleteRecord(i);
+  
+      actions.appendChild(editBtn);
+      actions.appendChild(deleteBtn);
+      tr.appendChild(actions);
+      tbody.appendChild(tr);
+    });
+  
+    counter.textContent = filtered.length;
+  }
+  
+  function fieldToIndex(field) {
+    const map = {
+      casenumber: 0,
+      name: 1,
+      service: 2,
+      section: 3,
+      case: 4,
+      filed: 5,
+      date: 6,
+    };
+    return map[field] ?? 0;
+  }
+  
+  function startEdit(index) {
+    const row = records[index];
+    form.casenumber.value = row[0];
+    form.name.value = row[1];
+    form.service.value = row[2];
+    form.section.value = row[3];
+    form.case.value = row[4];
+    form.filed.value = row[5];
+  
+    editingIndex = index;
+    editIndicator.hidden = false;
+    cancelEditBtn.hidden = false;
+    submitBtn.textContent = 'Actualizar registro';
+  }
+  
+  function cancelEdit() {
+    editingIndex = null;
+    form.reset();
+    editIndicator.hidden = true;
+    cancelEditBtn.hidden = true;
+    submitBtn.textContent = 'Crear registro';
+  }
+  
+  function deleteRecord(index) {
+    if (confirm('¿Eliminar este registro?')) {
+      records.splice(index, 1);
+      saveRecords();
+      renderTable();
+      showMessage('Registro eliminado');
+    }
+  }
+  
+  function clearAll() {
+    if (confirm('¿Eliminar todos los registros?')) {
+      records = [];
+      saveRecords();
+      renderTable();
+      showMessage('Todos los registros fueron eliminados');
+    }
+  }
+  
+  function downloadCsv() {
+    const csv = records.map(r => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'cases.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  
+  function showMessage(text) {
+    message.textContent = text;
+    message.hidden = false;
+    setTimeout(() => (message.hidden = true), 3000);
+  }
+  
+  init();
+  </code></pre>
+</section>
+<section>
+  <h2>CSS</h2>
+  <pre class="copied-1"><code>
+  :root {
+    --primary: #2563eb;
+    --accent: #4f46e5;
+    --danger: #dc2626;
+    --bg-light: #f9fafb;
+    --bg-dark: #1e1e1e;
+    --text-light: #f3f4f6;
+    --text-dark: #1f2937;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  body.dark {
+    background: var(--bg-dark);
+    color: var(--text-light);
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: auto;
+    padding: 1rem;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .btn.primary {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .btn.danger {
+    background: var(--danger);
+    border-color: var(--danger);
+  }
+  
+  .controls {
+    margin-bottom: 1rem;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  
+  input {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[readonly] {
+    background: #e5e7eb;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .message {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #e0f2fe;
+    border: 1px solid #60a5fa;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+  
+  .edit-indicator {
+    background: #fef3c7;
+    border: 1px solid #facc15;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .counter {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .records-table th,
+  .records-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  .records-table thead th {
+    background: #f3f4f6;
+    cursor: pointer;
+  }
+  
+  .records-table tbody tr:nth-child(even) {
+    background: #f9fafb;
+  }
+  
+  .records-table tbody tr:hover {
+    background-color: #e0f2ff;
+    transition: background-color 0.2s ease;
+  }
+  
+  body.dark .container {
+    background: #2c2c2c;
+    border-color: #444;
+  }
+  
+  body.dark input,
+  body.dark input[readonly],
+  body.dark .btn,
+  body.dark .records-table thead th,
+  body.dark .records-table tbody td {
+    background: #3a3a3a;
+    color: var(--text-light);
+    border-color: #555;
+  }
+  
+  body.dark .records-table thead th {
+    background: #2a2a2a;
+  }
+  
+  body.dark .records-table tbody tr:nth-child(even) {
+    background: #333;
+  }
+  
+  body.dark .records-table tbody tr:hover {
+    background-color: #334155 !important;
+    transition: background-color 0.2s ease;
+  }
+  
+  body.dark .message {
+    background: #333;
+    color: var(--text-light);
+  }
+  
+  body.dark .edit-indicator {
+    background: #4a3f1f;
+    border-color: #665c3c;
+    color: #facc15;
+  }
+  
+  .sortable {
+    position: relative;
+  }
+  
+  .sort-indicator {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+  }
+  
+  .small-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 2px;
+  }
+  
+  .small-btn.edit:hover {
+    background-color: #facc15;
+    color: #000;
+  }
+  
+  .small-btn.delete:hover {
+    background-color: var(--danger);
+    color: #fff;
+  }
+  
+  body.dark .small-btn:hover {
+    background-color: var(--accent);
+    color: #fff;
+  }
+  
+  body.dark .small-btn.edit:hover {
+    background-color: #facc15;
+    color: #000;
+  }
+  
+  body.dark .small-btn.delete:hover {
+    background-color: var(--danger);
+    color: #fff;
+  }
+  
+  .footer {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    text-align: center;
+    color: #6b7280;
+  }
+  </code></pre>
+</section>
+
+</main>
+  <!-- Aviso de copiado -->
+  <div id="copy-1">Copied</div>
+</body>
+</html>

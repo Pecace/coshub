@@ -37,6 +37,7 @@ coshub/
 │
 └── local/
     ├── cases.html
+    ├── code.html
     ├── main.html
     ├── register.html
     └── save.html
